@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {              
-                        // Build the Maven project
+                        echo 'Compile project with maven'
                         sh 'mvn clean compile'                  
             }            
         }
@@ -22,7 +22,7 @@ pipeline {
                 }
             }
             steps {               
-                        // Running unit tests
+                        echo 'Testing with maven'
                         sh 'mvn test'
                     }           
         }
@@ -35,6 +35,7 @@ pipeline {
                 }
             }
             steps {                  
+                      echo 'Packing with maven'
                       sh 'mvn package'
                   }            
         }
@@ -54,7 +55,7 @@ pipeline {
             }
             steps {                
                         // Execute the jar file
-                        // 
+                        echo 'Execute java application'
                         sh "java -cp 	target/miles-to-kilometers-1.0-SNAPSHOT.jar com.apasoft.App ${miles}"
                     }           
         }
