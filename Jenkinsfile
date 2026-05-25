@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use a Maven image with JDK 17
+                    image 'maven:3.9.9-eclipse-temurin-17'  // We use a Maven image with JDK 17
                     args '-v /home/jenkins/.m2:/root/.m2'  //Share local Maven repository
                 }
             }
@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use the same Maven image for testing                    
+                    image 'maven:3.9.9-eclipse-temurin-17'  // We use the same Maven image for testing                    
                     args '-v /home/jenkins/.m2:/root/.m2'  // Share local Maven repository
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
         stage('Package') {
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use the same Maven image for package
+                    image 'maven:3.9.9-eclipse-temurin-17'  // We use the same Maven image for package
                     args '-v /home/jenkins/.m2:/root/.m2'  // Share local Maven repository
                 }
             }
@@ -47,7 +47,7 @@ pipeline {
                 }
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use the same Maven image for deploying
+                    image 'maven:3.9.9-eclipse-temurin-17'  // We use the same Maven image for deploying
                     args '-v /home/jenkins/.m2:/root/.m2'  // Share local Maven repository
                 }
                 
